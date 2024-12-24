@@ -4,7 +4,6 @@ class Solution(object):
             i -= 1
             j += 1
         return s[i+1:j]
-    
     def longestPalindrome(self, s):
         """
         :type s: str
