@@ -20,6 +20,38 @@ class Solution(object):
                 max_idx_rev = len(sublist) -np.argmax(sublist[::-1]) - 1
                 cur_idx = max_idx_rev+ cur_idx + 1
         return True
+    def canJump_a_bit_faster(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        max_idx = -1
+        if len(nums) == 1:
+            return True
+        for i in range(len(nums)):
+            if i <max_idx:
+                continue
+            if not nums[i]:
+                return False
+            if i + nums[i] >= len(nums) - 1:
+                return True
+            if nums[i] == 1:
+                continue
+            max_num = -1
+            for j in range(i+1, i+1 + nums[i]):
+                if nums[j]+ j >= max_num:
+                    max_num = nums[j]+ j
+                    max_idx = j
+        return True
+    def a_bit_more_efficient(self, nums):
+        max_reach = 0
+        for i in range(len(nums)):
+            if i > max_reach:
+                return False
+            max_reach = max(max_reach, i + nums[i])
+            if max_reach >= len(nums) - 1:
+                return True
+        return True
 Solution().canJump(nums = [5,9,3,2,1,0,2,3,3,1,0,0])
 # You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
 
