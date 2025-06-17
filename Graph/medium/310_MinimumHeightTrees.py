@@ -5,33 +5,25 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: List[int]
         """
-        if len(edges) == 1:
-            return edges[0]
-        adj_mat = [[0 for i in range(n)] for j in range(n)]
-        for edge in edges:
-            adj_mat[edge[0]][edge[1]] = 1
-            adj_mat[edge[1]][edge[0]] = 1
-        centers = [i for i in range(n)]
-        last_center = centers
-        while(1):
-            print(centers)
-            leaves = self.removeLeaves(adj_mat, n)
-            centers = list(set(centers) - set(leaves))
-            if not centers or centers == last_center:
-                break
-            last_center = centers
-        # print(leaves)
         
-        print(last_center)
-        return last_center
-    def removeLeaves(self, adj_mat, n):
-        leaves = []
-        for node in range(n):
-            if sum(adj_mat[node]) == 1:
-                leaves.append(node)
-        for leaf in leaves:
-            for i in range(n):
-                adj_mat[i][leaf] = 0
-                adj_mat[leaf][i] = 0
+        if n == 1:
+            return [0]
+        from collections import defaultdict, deque
+        edges_map = defaultdict(set)
+        for node1, node2 in edges:
+            edges_map[node1].add(node2)
+            edges_map[node2].add(node1)
+        leaves = [node for node in edges_map if len(edges_map[node]) == 1]
+        remaining_nodes = n
+        while(remaining_nodes>2):
+            remaining_nodes -= len(leaves)
+            new_leaves = []
+            for leaf in leaves:
+                neighbor = edges_map[leaf].pop()
+                edges_map[neighbor].remove(leaf)
+                if len(edges_map[neighbor]) == 1:
+                    new_leaves.append(neighbor)
+                del edges_map[leaf]
+            leaves = new_leaves
         return leaves
 Solution().findMinHeightTrees(n=6, edges = [[0,1],[0,2],[0,3],[3,4],[4,5]])
