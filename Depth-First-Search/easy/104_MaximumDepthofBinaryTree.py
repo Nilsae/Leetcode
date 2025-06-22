@@ -14,17 +14,17 @@ class Solution(object):
         """
         self.ans = 0
         m = 0
-        self.DFS(root, m)
+        self.helper(root, m)
         return self.ans
-    def DFS(self, node, m):
+    def helper(self, node, m):
         if not node: 
             m = 0
             return
         m+=1
         if self.ans< m:
             self.ans = m
-        self.DFS(node.left, m)
-        self.DFS(node.right, m)
+        self.helper(node.left, m)
+        self.helper(node.right, m)
         
 #compact version:
 class Solution(object):
