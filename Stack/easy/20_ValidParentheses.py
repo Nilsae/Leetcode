@@ -65,3 +65,28 @@ class Solution(object):
 # Input: s = "([])"
 
 # Output: true
+
+# new implementation with queue:
+from collections import deque
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        hm = {
+            ')': '(',
+            '}': '{',
+            ']': '['
+        }
+        dq = deque()
+        for i in s:
+            if i in hm.keys():
+                if not dq or hm[i] != dq[-1]:
+                    return False
+                dq.pop()
+            else:
+                dq.append(i)
+        if not dq:
+            return True
+        return False
