@@ -1,0 +1,57 @@
+# -----------------------------
+# Python cache everywhere
+# -----------------------------
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# -----------------------------
+# Virtual environments (any depth)
+# -----------------------------
+env/
+venv/
+.venv/
+
+# -----------------------------
+# Jupyter checkpoints (any depth)
+# -----------------------------
+**/.ipynb_checkpoints/
+
+# -----------------------------
+# PyTorch / model checkpoints (any depth)
+# -----------------------------
+**/checkpoints/
+**/ckpts/
+**/models/
+
+# -----------------------------
+# TensorBoard / training logs (any depth)
+# -----------------------------
+**/runs/
+**/logs/
+
+# -----------------------------
+# Datasets (any depth)
+# -----------------------------
+**/data/
+**/datasets/
+
+# -----------------------------
+# SLURM / cluster logs
+# -----------------------------
+slurm-*.out
+*.out
+*.err
+
+# -----------------------------
+# Editors / IDEs
+# -----------------------------
+.vscode/
+.idea/
+
+# -----------------------------
+# Misc
+# -----------------------------
+*.log
+.DS_Store
