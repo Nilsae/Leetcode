@@ -1,6 +1,3 @@
-
-
-
 def are_coprime(a, b):
     n = a
     if b > a:
