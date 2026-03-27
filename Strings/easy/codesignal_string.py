@@ -1,3 +1,25 @@
+# Given a string, you need to return a new string where every letter is shifted to its right by one place in alphabetical order. The last letters z and Z should be replaced with the first ones: a and A, respectively. If the character isn't a letter, it should stay the same.
+
+# It is not allowed to use string built-in methods here.
+
+# For example, given the string "abc123XYz!", the function should return "bcd123YZa!".
+def solution(s):
+    ans = ''
+    for c in s:
+        if (ord(c) < ord('z') and ord(c) >= ord('a')) or (ord(c) < ord('Z') and ord(c) >= ord('A')) :
+            ans += chr(ord(c) + 1)
+        elif c == 'z':
+            ans += 'a'
+        elif c == 'Z':
+            ans += 'A'
+        else:
+            ans += c
+    return ans
+
+
+
+
+
 # You are given two strings, string1 and string2. Your goal is to determine a new string, string3, that is formed by characters that occur in both string1 and string2 in the same order as they occur in string1.
 
 # Characters in string3 should maintain their original sequence order from string1. If a character is repeated in string1 and string2, include that character in string3 as many times as it occurs in both strings, but not more than that.
