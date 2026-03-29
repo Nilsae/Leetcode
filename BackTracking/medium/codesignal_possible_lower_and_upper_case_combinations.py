@@ -29,3 +29,29 @@ def solution(s):
         answers_str.append(st)
 
     return answers_str
+
+
+
+
+
+
+
+# simpler solution:
+def solution(s):
+    def bt(t, idx):
+        if idx == len(s):
+            ans.append(t)
+            return
+        if not((s[idx] >= "a" and s[idx] <= "z") or (s[idx] >= "A" and s[idx] <= "Z") ) :
+            bt(t + s[idx], idx + 1)
+        else:
+            bt(t + s[idx], idx + 1)
+            if (s[idx] >= "a" and s[idx] <= "z"):
+                converted_char = chr(ord(s[idx]) + ord("A") - ord("a"))
+            else:
+                converted_char = chr(ord(s[idx]) - ord("A") + ord("a"))
+            bt(t + converted_char, idx + 1)
+    ans = []
+    t = ""
+    bt(t, 0)
+    return ans

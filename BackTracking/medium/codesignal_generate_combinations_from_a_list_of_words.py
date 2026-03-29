@@ -26,3 +26,19 @@ def solution(words):
         answers_str.append(st)
 
     return sorted(answers_str)
+
+# new simpler solution:
+def solution(words):
+    
+    ans = []
+    def bt(word, which_word):
+        if which_word == len(words):
+            ans.append(word[:])
+            return
+        for i in range(len(words[which_word])):
+            bt(word + words[which_word][i], which_word + 1)
+
+    which_word = 0
+    word = ""
+    bt(word, which_word)
+    return sorted(ans)
