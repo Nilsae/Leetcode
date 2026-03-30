@@ -39,3 +39,31 @@ def find_shortest_path(grid, start, end):
             explore(node)
         
     return -1
+
+
+
+# new implementation:
+import heapq
+def find_shortest_path(grid, start, end):
+    if grid[start[0]][start[1]] == -1 or grid[end[0]][end[1]] == -1:
+        return -1
+    h = []
+    num_rows = len(grid)
+    num_cols = len(grid[0])
+    distances = {}
+    heapq.heappush(h, (grid[start[0]][start[1]], start))
+    while h:
+        d, node = heapq.heappop(h)
+        if node == end:
+            return d
+        moves = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+        neighbors = [(node[0] + move[0], node[1] + move[1]) for move in moves]
+        for neighbor in neighbors:
+            
+            if neighbor[0] >= 0 and neighbor[0] < num_rows and neighbor[1] >= 0 and neighbor[1] < num_cols:
+                weight = grid[neighbor[0]][neighbor[1]]
+                if weight != -1:
+                    if neighbor not in distances or d + weight < distances[neighbor]:
+                        distances[neighbor] = d + weight
+                        heapq.heappush(h, (d + weight, neighbor))
+    return -1

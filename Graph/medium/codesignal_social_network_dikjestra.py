@@ -30,3 +30,29 @@ def find_friend(graph, your_id, potential_friend_id):
             explore(node, path_so_far)
         
     return []
+
+
+
+# new implementation with simpler heap:
+import heapq
+def find_friend(graph, your_id, potential_friend_id):
+    h = []
+    heapq.heappush(h, (0, your_id))
+    distances = {}
+    prev = {}
+    while h:
+        d, node = heapq.heappop(h)
+        if node == potential_friend_id:
+            path_rev = []
+            n = potential_friend_id
+            while n != your_id:
+                path_rev.append(n)
+                n = prev[n]
+            path_rev.append(your_id)
+            return path_rev[::-1]
+        for neighbor, weight in graph[node].items():
+            if neighbor not in distances or d + weight < distances[neighbor]:
+                prev[neighbor] = node
+                distances[neighbor] = d + weight
+                heapq.heappush(h, (d + weight, neighbor))
+    return []

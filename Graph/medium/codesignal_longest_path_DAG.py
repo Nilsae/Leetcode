@@ -45,3 +45,47 @@ def longest_path(graph, num_vertices):
                 largest_distances[t[0]] = t[1] + largest_distances[node]
     
     return largest_distances[topo[-1]]
+
+
+
+
+
+# new implementation:
+from collections import deque
+def longest_path(graph, num_vertices):
+    dist = {}
+    sorted_nodes = toposort(graph, num_vertices)
+    indegs = {node : 0 for node in range(num_vertices)}
+    for node in range(num_vertices):
+        for neighbor, _ in graph[node]:
+            indegs[neighbor] += 1
+            
+   
+    for node in sorted_nodes:
+        if indegs[node] == 0:
+            dist[node] = 0
+        for neighbor, weight in graph[node]:
+                if neighbor not in dist or dist[node] + weight > dist[neighbor]:
+                    dist[neighbor] = dist[node] + weight
+    return max(dist.values())
+            
+    
+def toposort(graph, num_vertices):
+    indegs = {node : 0 for node in range(num_vertices)}
+    for node in range(num_vertices):
+        for neighbor, _ in graph[node]:
+            indegs[neighbor] += 1
+
+    d = deque()
+    d.extend([node[0] for node in indegs.items() if node[1] == 0])
+    t = []
+    while d:
+        node = d.pop()
+        t.append(node)
+        for neighbor, _ in graph[node]:
+            if neighbor in indegs:
+                indegs[neighbor] -= 1
+                if indegs[neighbor] == 0:
+                    d.append(neighbor)
+        del indegs[node]
+    return t

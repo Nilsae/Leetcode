@@ -46,3 +46,25 @@ def shortest_path(graph, start, end):
         if dist == distances[node]: # we only store the smallest distance for each node in distances[node], but the heap might have the same node with bigger distances. Therefore we need to make sure that the node we just popped from the heap is the one with the smallest distance and only then explore it
             explore(node)
     return distances[end]
+
+
+
+
+# new simpler code:
+import heapq
+def shortest_path(graph, start, end):
+    h = [(0, start)]
+    distances = {node : float('inf') for node in graph}
+    while h:
+        d, node = heapq.heappop(h)
+        if d < distances[node]:
+            distances[node] = d
+        else:
+            continue
+        if node == end:
+            return d
+        for neighbor, dist in graph[node].items():
+            heapq.heappush(h, (d + dist, neighbor))
+    
+
+    
