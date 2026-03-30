@@ -25,3 +25,21 @@ def find_anagrams(strs):
     for i in range(len(answer)):
         answer[i] = sorted(answer[i])
     return sorted(answer)
+
+
+
+
+# newer:
+from collections import Counter
+def find_anagrams(strs):
+    ans = []
+    d = {}
+    for i in range(len(strs)):
+        t = tuple(sorted(Counter(strs[i]).items()))
+        if t not in d:
+            d[t] = []
+        d[t].append(strs[i])
+
+    for t in d.values():
+        ans.append(sorted((t)))
+    return sorted(ans)

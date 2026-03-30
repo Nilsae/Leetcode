@@ -37,3 +37,48 @@ def shortest_path(grid, source, destination):
         path.append(node)
         
     return (distances[destination[0]][destination[1]], path)
+
+
+
+
+# new implementation: (my previous one looks cleaner:) )
+import heapq
+def shortest_path(grid, source, destination):
+    num_rows = len(grid)
+    num_cols = len(grid[0])
+    ph = []
+    distances = {}
+    prev = {}
+    heapq.heappush(ph, (0, source))
+    while ph:
+        d, node = heapq.heappop(ph)
+        if node in distances:
+            if d < distances[node]:
+                distances[node] = d
+            else:
+                continue
+        else:
+            distances[node] = d
+            
+        if node == destination:
+            path = []
+            p = destination
+            while p != source:
+                path.append(p)
+                p = prev[p]
+            path.append(source)
+            return (d, path[::-1])
+            
+        neighbors = [
+            (node[0] + 1, node[1]),
+            (node[0], node[1] + 1),
+            (node[0] - 1, node[1]),
+            (node[0], node[1] - 1),
+        ]
+        for neighbor in neighbors:
+            if neighbor[0] >= 0 and neighbor[0] < num_rows and neighbor[1] >= 0 and neighbor[1] < num_cols and grid[neighbor[0]][neighbor[1]]:
+                if neighbor not in distances or d + 1 < distances[neighbor]:
+                    prev[neighbor] = node
+                    heapq.heappush(ph, (d + 1, neighbor))
+                
+    return (-1, [])

@@ -28,3 +28,23 @@ def count_pairs_with_diff_k(nums, k):
         #             ans += 1
     return ans 
 
+
+# new simpler code:
+def count_pairs_with_diff_k(nums, k):
+    d = {}
+    ans = 0
+    # num1 - num2 = k
+    # num1 = k + num2
+    # num2 - num1 = k
+    # num1 = -k + num2
+    for num in nums:
+        if num - k in d:
+            ans += d[num - k]
+        if num + k in d:
+            ans += d[num + k]
+        if num in d:
+            d[num] += 1
+        else:
+            d[num] = 1
+   
+    return ans

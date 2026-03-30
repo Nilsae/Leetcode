@@ -25,3 +25,10 @@ def find_k_shortest(strings: List[str], k: int) -> List[str]:
     for item in l:
         ans.append(item[0])
     return ans
+
+
+# simpler code:
+
+def find_k_shortest(strings: List[str], k: int) -> List[str]:
+    h = heapq.nsmallest(k, enumerate(strings), key = lambda x: (len(x[1]), x[0]))
+    return [x[1] for x in h]
