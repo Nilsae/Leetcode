@@ -41,3 +41,18 @@ class Solution:
                     return strs[0][:idx]
             idx += 1
         return strs[0]
+    
+
+
+
+# more efficient:
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        min_str = min(strs, key=len)
+        idx = 0
+        while idx < len(min_str):
+            for s in strs:
+                if s[idx] != min_str[idx]:
+                    return min_str[:idx]
+            idx += 1
+        return min_str
