@@ -90,3 +90,24 @@ class Solution(object):
         if not dq:
             return True
         return False
+
+
+# new implementation:
+from collections import deque
+class Solution:
+    def isValid(self, s: str) -> bool:
+        q = deque()
+        opens = set(['(', '{', '['])
+        d = {
+            ')' : '(',
+            '}' : '{',
+            ']' : '['
+        }
+        for c in s:
+            if c in opens:
+                q.append(c)
+            elif not q or q.pop() != d[c]:
+                return False
+        if q:
+            return False
+        return True
