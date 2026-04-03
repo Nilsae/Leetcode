@@ -1,0 +1,1 @@
+# We are shifting from using the raw rating to the deviation from the user's average. This ensures we're measuring how much more (or less) a neighbor liked an item compared to their usual baseline.
