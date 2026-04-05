@@ -13,3 +13,11 @@ class Solution(object):
                 ans = elem
                 max_rep = rep
         return ans
+    
+
+# new:
+from collections import Counter
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        c = Counter(nums)
+        return max(c.items(), key = lambda x: x[1])[0]
