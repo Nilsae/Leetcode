@@ -1,0 +1,15 @@
+[
+  {"id": 1, "genre_preferences": {"Jazz": 0.5, "Pop": 0.8, "Rock": 0.3}, "time_listening_avg": 52},
+  {"id": 2, "genre_preferences": {"Jazz": 0.7, "Pop": 0.2, "Rock": 0.5}, "time_listening_avg": 35},
+  {"id": 3, "genre_preferences": {"Jazz": 0.4, "Pop": 0.6, "Rock": 0.9}, "time_listening_avg": 47},
+  {"id": 4, "genre_preferences": {"Jazz": 0.9, "Pop": 0.4, "Rock": 0.3}, "time_listening_avg": 50},
+  {"id": 5, "genre_preferences": {"Jazz": 0.6, "Pop": 0.7, "Rock": 0.2}, "time_listening_avg": 45},
+  {"id": 6, "genre_preferences": {"Jazz": 0.3, "Pop": 0.5, "Rock": 0.9}, "time_listening_avg": 40},
+  {"id": 7, "genre_preferences": {"Jazz": 0.8, "Pop": 0.4, "Rock": 0.6}, "time_listening_avg": 55},
+  {"id": 8, "genre_preferences": {"Jazz": 0.1, "Pop": 0.3, "Rock": 0.7}, "time_listening_avg": 60},
+  {"id": 9, "genre_preferences": {"Jazz": 0.4, "Pop": 0.8, "Rock": 0.5}, "time_listening_avg": 38},
+  {"id": 10, "genre_preferences": {"Jazz": 0.7, "Pop": 0.2, "Rock": 0.4}, "time_listening_avg": 42},
+  {"id": 11, "genre_preferences": {"Jazz": 0.5, "Pop": 0.9, "Rock": 0.1}, "time_listening_avg": 37},
+  {"id": 12, "genre_preferences": {"Jazz": 0.2, "Pop": 0.3, "Rock": 0.7}, "time_listening_avg": 50},
+  {"id": 13, "genre_preferences": {"Jazz": 0.5, "Pop": 0.5, "Rock": 0.5}, "time_listening_avg": 43}
+]
