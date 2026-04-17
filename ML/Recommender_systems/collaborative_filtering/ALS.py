@@ -4,7 +4,7 @@
 # 3. Repeat until the latent embeddings converge.
 
 # l: regularization weight 
-# We are trying to minimize (R - U @ V)^2 + l|U|^2 + l|V|^2
+# We are trying to minimize (R - U @ V)^2 + l(|U|^2 + |V|^2)
 # = (R - U @ V).T * (R - U @ V) + l|U|^2 + l|V|^2
 # if we have item factor fixed and find the best user factor:
 # take the derivative with respect to U and set to zero:
