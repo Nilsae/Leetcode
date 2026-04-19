@@ -1,4 +1,6 @@
 # Coverage calculation
+# Coverage is the proportion of all possible items that appear at least once in the recommendation results across users.
+# Intuition: it tells you how much of your catalog your model is actually using—low coverage means it keeps recommending the same few items, while high coverage means it explores and recommends a wider variety of items.
 
 def coverage(predictions, all_items):
     # s = set()
